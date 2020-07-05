@@ -21,25 +21,76 @@ body{
     background: $dia_despejado;
 }
 
+.dia-poco-nublado{
+    background: $dia_nubes;
+}
+
 .dia-nublado{
     background: $dia_nublado;
+}
+
+.dia-lluvioso{
+  background: $dia_nublado;
+}
+
+.noche-despejada, .noche-poco-nublada{
+  background: $noche_despejada;
+}
+
+.noche-nublada, .noche-lluviosa{
+  background: $noche_nublada;
+}
+
+.amanecer-despejado{
+  background: $amanecer;
+}
+
+.atardecer-despejado{
+  background: $atardecer;
 }
 
 // --------------- Efectos --------------- //
 
 .soleado{
-    background: url(assets/img/estados/soleado.png) no-repeat;
-    background-size: cover;
+  background: url(assets/img/estados/soleado.png) no-repeat;
+  background-size: cover;
 }
 
-.lluvia{
-    background: url(assets/img/estados/lluvia.png) no-repeat;
-    background-size: cover;
+.dia-nubes{
+  background: url(assets/img/estados/dia_nubes.png) no-repeat;
+  background-size: cover;
+  background-position: left;
 }
 
-.nubes-dia{
-    background: url(assets/img/estados/dia_nublado.png) no-repeat;
-    background-size: cover;
+.dia-nubes-lluvia{
+  background: url(assets/img/estados/dia_nubes_lluvia.png) no-repeat;
+  background-size: cover;
+}
+
+.estrellas{
+  background: url(assets/img/estados/estrellas.png) no-repeat;
+  background-size: cover;
+}
+
+.estrellas-nubes{
+  background: url(assets/img/estados/noche_nublado_estrellas.png) no-repeat;
+  background-size: cover;
+}
+
+.noche-nubes{
+  background: url(assets/img/estados/noche_nublado.png) no-repeat;
+  background-size: cover;
+}
+
+.noche-nubes-lluvia{
+  background: url(assets/img/estados/noche_lluvia.png) no-repeat;
+  background-size: cover;
+}
+
+.nubes-anaranjadas{
+  background: url(assets/img/estados/atardecer_nublado.png) no-repeat;
+  background-size: cover;
+  background-position: left;
 }
 
 app-local,
@@ -73,5 +124,27 @@ app-world{
   .soleado{
     background: url(assets/img/estados/soleado_mobile.png) no-repeat;
     background-size: cover;
+  }
+
+  .dia-nubes, .noche-nubes, .nubes-anaranjadas{
+    animation: nubesTranslate 32s 0s infinite ease-in-out;
+  }
+
+  .dia-nubes-lluvia, .estrellas, .estrellas-nubes, .noche-nubes-lluvia{
+    animation: nubesTranslate 200s 0s infinite ease-in-out;
+  }
+
+  // --------------- Keyframes --------------- //
+
+  @keyframes nubesTranslate {
+    0%{
+      background-position: left;
+    }
+    50%{
+      background-position: right;
+    }
+    100%{
+      background-position: left;
+    }
   }
 }

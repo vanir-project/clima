@@ -9,11 +9,16 @@ export class HomeComponent implements OnInit {
   public navValue:string='local';
   public clima:string='dia-despejado';
   public effect:string='';
+  public simulator = false;
   
   constructor() { }
 
   ngOnInit() {
     this.effectPngValue();
+  }
+  
+  public simulatorValue(){
+    this.simulator = !this.simulator;
   }
 
   public effectPngValue(){

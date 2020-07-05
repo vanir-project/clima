@@ -5,6 +5,25 @@
           <p class="nav-button" (click)="navValue = 'local'" [ngClass]="{'active': navValue === 'local'}">Tiempo Local</p>
           <p class="nav-button" (click)="navValue = 'world'" [ngClass]="{'active': navValue === 'world' }">El mundo</p>
         </nav>
+        <img class="simulator-btn" src="assets/img/config.svg" alt="" (click)="simulatorValue()">
+        <div class="simulator" [ngClass]="{'active': simulator}">
+          <p>Simular clima</p>
+          <ul>
+            <li (click)="clima='dia-despejado'; effect='soleado'; simulatorValue()">Día despejado</li>
+            <li (click)="clima='dia-poco-nublado'; effect='dia-nubes'; simulatorValue()">Día poco nublado</li>
+            <li (click)="clima='dia-nublado'; effect='dia-nubes'; simulatorValue()">Día muy nublado</li>
+            <li (click)="clima='dia-nublado'; effect='dia-nubes-lluvia'; simulatorValue()">Día lluvioso</li>
+            <li (click)="clima='noche-despejada'; effect='estrellas'; simulatorValue()">Noche despejada</li>
+            <li (click)="clima='noche-despejada'; effect='estrellas-nubes'; simulatorValue()">Noche poco nublada</li>
+            <li (click)="clima='noche-nublada'; effect='noche-nubes'; simulatorValue()">Noche muy nublada</li>
+            <li (click)="clima='noche-lluviosa'; effect='noche-nubes-lluvia'; simulatorValue()">Noche lluviosa</li>
+            <li (click)="clima='amanecer-despejado'; effect='estrellas'; simulatorValue()">Amanecer despejado</li>
+            <li (click)="clima='atardecer-despejado'; effect='estrellas'; simulatorValue()">Atardecer despejado</li>
+            <li (click)="clima='amanecer-despejado'; effect='nubes-anaranjadas'; simulatorValue()">Amanecer nublado</li>
+            <li (click)="clima='atardecer-despejado'; effect='nubes-anaranjadas'; simulatorValue()">Atardecer nublado</li>
+          </ul>
+        </div>
+        <div class="touch-close" [ngClass]="{'active': simulator}" (click)="simulatorValue()"></div>
         <div class="content">
           <app-local *ngIf="navValue==='local'"></app-local>
           <app-world *ngIf="navValue==='world'"></app-world>
