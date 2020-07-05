@@ -8,25 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   public navValue:string='local';
   public clima:string='dia-despejado';
-  public effect:string='';
+  public effect:string='soleado';
   public simulator = false;
   
   constructor() { }
 
   ngOnInit() {
-    this.effectPngValue();
   }
   
   public simulatorValue(){
     this.simulator = !this.simulator;
-  }
-
-  public effectPngValue(){
-    if(this.clima==='dia-despejado'){
-      this.effect='soleado';
-    } else if(this.clima==='dia-nublado'){
-      this.effect='nubes-dia'
-    }
   }
   
 }
