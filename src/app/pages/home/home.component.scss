@@ -1,0 +1,116 @@
+*{
+    color: #FFF;
+}
+
+section{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    .effects{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+
+        .container{
+            width: 100%;
+            height: 100%;
+            padding: 3rem 2rem;
+            z-index: 2;
+    
+            nav{
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                height: 2rem;
+    
+                .nav-button{
+                    font-weight: 400;
+                    font-size: 1.3rem;
+                    margin: 0;
+                    opacity: .7;
+                    cursor: pointer;
+                    position: relative;
+    
+                    &:hover{
+                        opacity: 1;
+                    }
+    
+                    &.active{
+                        opacity: 1;
+    
+                        &:before{
+                            content: '';
+                            position: absolute;
+                            bottom: -.5rem;
+                            left: 0;
+                            width: 0%;
+                            height: 2px;
+                            background-color: #FFF;
+                            animation: navTransition .8s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+                        }
+                    }
+                }
+    
+                .nav-button:first-child{
+                    margin-right: 2rem;
+                }
+            }
+    
+            .content{
+                height: calc(100% - 2rem);
+                padding-top: 2rem;
+            }
+        }
+    }
+
+}
+
+@keyframes navTransition{
+    100%{
+        width: 103%;
+    }
+}
+
+@media(max-width:1700px){
+    section{
+        .effects{            
+            .container{
+                padding: 2rem;
+
+                nav{
+                    .nav-button{
+                        font-size: 1.1rem;
+                    }
+                }
+                
+                .content{
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:992px){
+    section{
+        .effects{
+            .container{
+                padding: 1.5rem 1rem 1rem 1rem;
+                
+                nav{
+                    .nav-button{
+                        font-size: 1rem;
+                    }
+                    .nav-button:first-child{
+                        margin-right: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}

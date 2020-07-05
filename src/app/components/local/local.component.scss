@@ -1,0 +1,329 @@
+* {
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+section {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+
+  .day-content {
+    width: 60%;
+    padding: 5rem 2rem;
+
+    .feature {
+      width: 85%;
+      height: 70%;
+      display: flex;
+      margin: 0 auto;
+      opacity: 0;
+      animation: appear .9s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+
+      .text-box {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        p.location {
+          font-size: 1.4rem;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          justify-content: center;
+          margin: 0;
+
+          img {
+            height: 1.3rem;
+            margin-right: .5rem;
+          }
+        }
+
+        p.hour {
+          font-size: 3rem;
+          margin: 1rem 0;
+        }
+
+        h2.temp {
+          font-size: 18vh;
+          margin: 0;
+          text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .svg-container {
+        width: 40%;
+        opacity: 0;
+        animation: toOpacity .9s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+        
+        img{
+            width: 100%;
+        }
+      }
+    }
+
+    .hours {
+      margin: 0 auto;
+      width: 80%;
+      height: 30%;
+      display: flex;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: .7rem;
+      padding: 1.5rem 3rem;
+      justify-content: space-between;
+      opacity: 0;
+      animation: appear .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+
+      .hour-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .hour,
+        .temp {
+          font-size: 1.7rem;
+        }
+
+        img {
+          width: 3rem;
+        }
+      }
+    }
+  }
+
+  .week-content {
+    width: 40%;
+    padding: 5rem 2rem;
+    opacity: 0;
+    animation: appear .9s .3s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+
+    .mobile-btn{
+        display: none;
+    }
+
+    .box {
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 1rem;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .box-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .weekday {
+          font-size: 2rem;
+        }
+
+        img {
+          width: 4rem;
+        }
+
+        .temperature {
+
+          .max,
+          .min {
+            font-size: 2rem;
+          }
+
+          .min {
+            opacity: .6;
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width:1700px){
+    section{
+        width: 100%;
+        .day-content, .week-content{
+            padding: 3rem 2rem;
+        }
+
+        .day-content{
+            width: 55%;
+
+            .feature {
+                width: 100%;
+
+                .text-box{
+                    justify-content: center;
+
+                    p.hour{
+                        font-size: 2.4rem;
+                    }
+
+                    h2.temp{
+                        font-size: 11vw;
+                        line-height: 1;
+                    }
+                }
+
+                .svg-container{
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            .hours{
+                padding: 1rem 3rem;
+
+                .hour-box{
+                    .hour, .temp{
+                        font-size: 1.2rem;
+                    }
+
+                    img{
+                        width: 2.4rem;
+                    }
+                }
+            }
+        }
+
+        .week-content{
+            width: 45%;
+            
+            .box{
+                padding: 2.5rem;
+
+                .box-line{
+                    .weekday, .temperature .max, .temperature .min{
+                        font-size: 4vh;
+                    }
+
+                    img{
+                        width: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:992px){
+    section{
+        .day-content, .week-content{
+            padding: 0;
+            width: 100%;
+        }
+        
+        .day-content{
+            padding-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            .feature{
+                animation: appear .9s 0s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+                height: auto;
+                padding: 0 0 12vh 0;
+                
+                .text-box {
+
+                    h2.temp{
+                        font-size: 11vh;
+                    }
+
+                    p.hour{
+                        font-size: 1.5rem;
+                    }
+
+                    p.location{
+                        font-size: .9rem;
+
+                        img{
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .hours{
+                width: 100%;
+                padding: 1.3rem 1.5rem;
+                max-height: 165px;
+                animation: appear .9s .3s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+
+                .hour-box{
+                    .hour, .temp{
+                        font-size: .9rem;
+                    }
+
+                    img{
+                        width: 10vw;
+                    }
+                }
+            }
+        }
+
+        .week-content{
+            position: fixed;
+            background: #FFF;
+            width: 100vw;
+            left: 0;
+            height: 70vh;
+            bottom: -69vh;
+            transition-duration: 1s;
+            animation: appear .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+            
+            *{
+                color: #838383;
+                text-shadow: none;
+            }
+
+            &.active{
+                bottom: 0;
+
+                .mobile-btn img.arrow{
+                    transform: translate(-50%,-50%) rotate(0deg);
+                }                
+            }
+            
+            .mobile-btn{
+                position: absolute;
+                width: 70vw;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 100%;
+                display: flex;
+                
+                img{
+                    width: 100%;
+                }
+
+                img.arrow{
+                    width: 1rem;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%,-50%) rotate(180deg);
+                }
+            }
+
+            .box{
+                padding: 10vw;
+
+                .box-line{
+                    .weekday, .temperature .max, .temperature .min{
+                        font-size: 3vh;
+                    }
+
+                    img{
+                        height: 6vh;
+                        width: initial;
+                    }
+                }
+            }            
+        }
+    }
+}

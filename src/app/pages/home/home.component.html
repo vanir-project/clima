@@ -1,0 +1,19 @@
+<section class="{{clima}}">
+  <div class="effects {{effect}}">
+      <div class="container">
+        <nav>
+          <p class="nav-button" (click)="navValue = 'local'" [ngClass]="{'active': navValue === 'local'}">Tiempo Local</p>
+          <p class="nav-button" (click)="navValue = 'world'" [ngClass]="{'active': navValue === 'world' }">El mundo</p>
+        </nav>
+        <div class="content">
+          <app-local *ngIf="navValue==='local'"></app-local>
+          <app-world *ngIf="navValue==='world'"></app-world>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+
