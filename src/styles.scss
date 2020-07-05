@@ -68,3 +68,10 @@ app-world{
     opacity: 1;
   }
 }
+
+@media(max-width:992px){
+  .soleado{
+    background: url(assets/img/estados/soleado_mobile.png) no-repeat;
+    background-size: cover;
+  }
+}

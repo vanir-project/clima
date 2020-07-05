@@ -35,6 +35,7 @@ section{
                     opacity: .7;
                     cursor: pointer;
                     position: relative;
+                    user-select: none;
     
                     &:hover{
                         opacity: 1;
