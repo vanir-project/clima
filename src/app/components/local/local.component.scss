@@ -433,7 +433,7 @@ section {
             height: 80vh;
             bottom: -79vh;
             padding: 0 1rem;
-            transition-duration: 1s;
+            transition-duration: .8s;
             animation: appear .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
             z-index: 3;
             
@@ -441,22 +441,22 @@ section {
               color: rgba(255, 255, 255, 0.85);
               text-shadow: none;
             }
-
+            
             &.active{
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.8);
+              background: rgba(35, 35, 35, 0.8);
+              bottom: 0;
 
-                .mobile-btn {
-                  filter: invert(1);
+                .mobile-btn {                  
+                  filter: invert(0.86);
                   opacity: .8;
 
                   img.arrow {
                     transform: translate(-50%, -50%) rotate(0deg);
                   }
                 }
-            }
-            
-            .mobile-btn{
+              }
+              
+              .mobile-btn{
                 position: absolute;
                 width: 70vw;
                 height: 9.7vw;
@@ -464,6 +464,7 @@ section {
                 transform: translateX(-50%);
                 bottom: 100%;
                 display: flex;
+                transition-duration: .8s;                
                 
                 img{
                     width: 100%;
