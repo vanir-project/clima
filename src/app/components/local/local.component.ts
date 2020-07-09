@@ -30,7 +30,7 @@ export class LocalComponent implements OnInit {
   }, {
     icon: 'deg3',
     descr: 'Viento',
-    value: 'Norte',
+    value: 'SO',
     deg: 'rotate(50deg)'
   }, {
     icon: 'visibi3',

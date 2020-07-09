@@ -421,126 +421,152 @@ section {
             }
 
             &.blur{
-              filter: blur(.4rem);
+              opacity: .2;
             }
         }
 
-        .right-box{
-            position: fixed;
-            background: #FFF;
-            width: 100vw;
-            left: 0;
-            height: 80vh;
-            bottom: -79vh;
-            padding: 0 1rem;
-            transition-duration: .8s;
-            animation: appear .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
-            z-index: 3;
-            
-            *{
-              color: rgba(255, 255, 255, 0.85);
-              text-shadow: none;
-            }
-            
-            &.active{
-              background: rgba(35, 35, 35, 0.8);
-              bottom: 0;
+        .right-box {
+          position: fixed;
+          background: #FFF;
+          width: 100vw;
+          left: 0;
+          height: 75vh;
+          bottom: -74vh;
+          padding: 0 1rem;
+          transition-duration: .8s;
+          animation: appear .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+          z-index: 3;
 
-                .mobile-btn {                  
-                  filter: invert(0.86);
-                  opacity: .8;
+          * {
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: none;
+          }
 
-                  img.arrow {
-                    transform: translate(-50%, -50%) rotate(0deg);
-                  }
-                }
+          &.active {
+            background: rgba(35, 35, 35, 0.8);
+            bottom: 0;
+
+            .mobile-btn {
+              opacity: .8;
+              filter: invert(0.86);
+
+              img.arrow {
+                transform: translate(-50%, -50%) rotate(0deg);
               }
-              
-              .mobile-btn{
-                position: absolute;
-                width: 70vw;
-                height: 9.7vw;
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 100%;
-                display: flex;
-                transition-duration: .8s;                
-                
-                img{
-                    width: 100%;
-                }
-
-                img.arrow{
-                    width: 1rem;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%,-50%) rotate(180deg);
-                }
             }
 
-            .details-box{
-              padding: 1.6rem 1rem 0rem 1rem;
-              max-width: 500px;
-              margin: 0 auto;
-              
-              .box{
-                width: 33%;
+            .details-box {
+              .box {
+                animation: toScale .9s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
 
-                .icon-cont{
-                  width: 12vw;
-                  height: 12vw;
-                  max-width: 4rem;
-                  max-height: 4rem;
-                  filter: invert(.2);
-                  margin-right: .5rem;
-                  padding: 0.7rem;
-                }
-
-                & > div{
-                  span{
-                    font-size: .6rem;
-                  }
-                  h3{
-                    font-size: .8rem;
-                    margin: 0;
-
-                    span{
-                      font-size: .6rem;
-                    }
+                @for $i from 1 through 10 {
+                  &:nth-child(#{$i}n) {
+                    animation-delay: #{.2 + $i * 0.1}s;
                   }
                 }
               }
             }
 
             .week-content {
-              padding: .5rem 5vw 5vw;
-              max-width: 500px;
-              margin: 0 auto;
-              background: transparent;
-
               .box-line {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-                padding-bottom: .5rem;
-                
-                .weekday {
-                  font-size: 2.6vh;
-                }
+                animation: toScale .9s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
 
-                & > div{
-                  img {
-                    height: 5vh;
-                    width: initial;
-                    margin-right: 1rem;
-                  }
-
-                  .temperature .max,
-                  .temperature .min {
-                    font-size: 2.6vh;
+                @for $i from 1 through 10 {
+                  &:nth-child(#{$i}n) {
+                    animation-delay: #{.2 + $i * 0.1}s;
                   }
                 }
               }
             }
+          }
+
+          .mobile-btn {
+            position: absolute;
+            width: 70vw;
+            height: 9.7vw;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 100%;
+            display: flex;
+            transition-duration: .8s;
+
+            img {
+              width: 100%;
+            }
+
+            img.arrow {
+              width: 1rem;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%) rotate(180deg);
+            }
+          }
+
+          .details-box {
+            padding: 1.6rem 1rem 0rem 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+
+            .box {
+              width: 33%;
+              animation: none;
+
+              .icon-cont {
+                width: 12vw;
+                height: 12vw;
+                max-width: 4rem;
+                max-height: 4rem;
+                filter: invert(.2);
+                margin-right: .5rem;
+                padding: 0.7rem;
+              }
+
+              &>div {
+                span {
+                  font-size: .6rem;
+                }
+
+                h3 {
+                  font-size: .8rem;
+                  margin: 0;
+
+                  span {
+                    font-size: .6rem;
+                  }
+                }
+              }
+            }
+          }
+
+          .week-content {
+            padding: .5rem 5vw 5vw;
+            max-width: 600px;
+            margin: 0 auto;
+            background: transparent;
+
+            .box-line {
+              border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+              padding-bottom: .5rem;
+              animation: none;
+
+              .weekday {
+                font-size: 4vw;
+              }
+
+              &>div {
+                img {
+                  width: 7vw;
+                  margin-right: 1rem;
+                }
+
+                .temperature .max,
+                .temperature .min {
+                  font-size: 4vw;
+                }
+              }
+            }
+          }
         }
 
         .touch-background {
