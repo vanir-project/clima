@@ -1,10 +1,12 @@
 <section>
-    <div class="day-content">
+    <div class="day-content" [ngClass]="{'blur': mobileBtn}">
         <div class="feature">
             <div class="text-box">
-                <p class="location"><img src="assets/img/ubi.svg" alt=""> Buenos Aires, Argentina</p>
-                <p class="hour">3:48 PM</p>
-                <h2 class="temp">18°C</h2>
+                <div>
+                    <p class="location"><img src="assets/img/ubi.svg" alt=""> Buenos Aires, Argentina</p>
+                    <p class="hour">3:48 PM</p>
+                    <h2 class="temp">18°</h2>
+                </div>
             </div>
             <div class="svg-container">
                 <img src="assets/img/sol_nube.png" alt="">
@@ -18,18 +20,31 @@
             </div>
         </div>
     </div>
-    <div class="week-content" [ngClass]="{'active': mobileBtn}">
+    <div class="right-box" [ngClass]="{'active': mobileBtn}">
         <div class="mobile-btn" (click)="mobileBtnFunction()" >
             <img src="assets/img/mobile_btn.png" alt="">
             <img class="arrow" src="assets/img/down_arrow.svg" alt="">
         </div>
-        <div class="box">
+        <div class="details-box">
+            <div class="box" *ngFor="let a of boxDetail">
+                <div class="icon-cont">
+                    <img src="assets/img/{{a.icon}}.svg" alt="" [ngStyle]="{'transform': a.deg }">
+                </div>                
+                <div>
+                    <span>{{a.descr}}</span>
+                    <h3>{{a.value}}<span>{{a.unid}}</span></h3>
+                </div>
+            </div>            
+        </div>
+        <div class="week-content">
             <div class="box-line" *ngFor="let item of days">
                 <span class="weekday">{{item}}</span>
-                <img src="assets/img/sol_nube.png" alt="">
-                <div class="temperature">
-                    <span class="max">21°</span>
-                    <span class="min">15°</span>
+                <div>
+                    <img src="assets/img/sol_nube.png" alt="">
+                    <div class="temperature">
+                        <span class="max">21°</span>
+                        <span class="min">15°</span>
+                    </div>
                 </div>
             </div>
         </div>

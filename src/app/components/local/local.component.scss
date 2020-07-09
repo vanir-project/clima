@@ -3,7 +3,8 @@
 }
 
 section {
-  width: 90%;
+  width: 80%;
+  max-width: 1536px;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -21,45 +22,55 @@ section {
       animation: appear .9s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
 
       .text-box {
-        width: 60%;
+        width: 50%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-
-        p.location {
-          font-size: 1.4rem;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding-right: 3rem;
+        
+        & > div{
           display: flex;
+          flex-direction: column;
           align-items: center;
-          width: 100%;
           justify-content: center;
-          margin: 0;
 
-          img {
-            height: 1.3rem;
-            margin-right: .5rem;
+          p.location {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            margin: 0;
+            white-space: nowrap;
+  
+            img {
+              height: 1.3rem;
+              margin-right: .5rem;
+            }
+          }
+  
+          p.hour {
+            font-size: 3rem;
+            margin: 1rem 0;
+          }
+  
+          h2.temp {
+            font-size: 18vh;
+            margin: 0;
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
           }
         }
 
-        p.hour {
-          font-size: 3rem;
-          margin: 1rem 0;
-        }
-
-        h2.temp {
-          font-size: 18vh;
-          margin: 0;
-          text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
-        }
       }
 
       .svg-container {
-        width: 40%;
+        width: 50%;
         opacity: 0;
         animation: toOpacity .9s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
         
-        img{
-            width: 100%;
+        img, svg{
+          width: 100%;
+          max-width: 20rem;
         }
       }
     }
@@ -74,12 +85,22 @@ section {
       padding: 1.5rem 3rem;
       justify-content: space-between;
       opacity: 0;
-      animation: appear .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+      animation: appear .9s .3s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
 
       .hour-box {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
+        opacity: 0;
+        animation: appear .9s .3s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+        
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}n) {
+            animation-delay: #{.4 + $i * 0.1}s;
+          }
+        }
 
         .hour,
         .temp {
@@ -93,22 +114,81 @@ section {
     }
   }
 
-  .week-content {
+   .right-box{
     width: 40%;
     padding: 5rem 2rem;
     opacity: 0;
-    animation: appear .9s .3s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+    animation: appear .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
 
     .mobile-btn{
         display: none;
     }
 
-    .box {
+    .details-box{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      height: 35%;
+
+      .box{
+        display: flex;
+        align-items: center;
+        width: 30%;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: toScale .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}n) {
+            animation-delay: #{.7 + $i * 0.1}s;
+          }
+        }
+
+        .icon-cont{
+          border-radius: 10px;
+          padding: .8rem;
+          background: rgba(255, 255, 255, 0.15);
+          width: 4rem;
+          height: 4rem;
+          margin-right: 1rem;
+
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        
+
+        & > div{
+
+          span{
+            font-size: .8rem;
+          }
+
+          h3{          
+            font-weight: 500;
+            margin: .5rem 0;
+            font-size: 1.4rem;
+
+            span{
+              font-size: 1.1rem;
+              margin-left: 2px;
+            }
+          }
+        }
+
+        &:nth-child(1), &:nth-child(4){justify-content: flex-start;}
+        &:nth-child(2), &:nth-child(5){justify-content: center;}
+        &:nth-child(3), &:nth-child(6){justify-content: flex-end;}
+      }
+    }
+
+    .week-content {
       width: 100%;
-      height: 100%;
+      height: 65%;
       background: rgba(255, 255, 255, 0.15);
       border-radius: 1rem;
-      padding: 3rem;
+      padding: 1.3rem 2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -117,27 +197,46 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        opacity: 0;
+        animation: appear .9s .9s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}n) {
+            animation-delay: #{1 + $i * 0.1}s;
+          }
+        }
+
+        &:last-child{
+          margin: 0;
+        }
 
         .weekday {
-          font-size: 2rem;
+          font-size: 1.5rem;
         }
 
-        img {
-          width: 4rem;
-        }
+        & > div{
+          display: flex;
+          align-items: center;
 
-        .temperature {
-
-          .max,
-          .min {
-            font-size: 2rem;
+          img {
+            width: 2.8rem;
+            margin-right: 3rem;
           }
-
-          .min {
-            opacity: .6;
-            margin-left: 1rem;
+  
+          .temperature {
+  
+            .max,
+            .min {
+              font-size: 1.5rem;
+            }
+  
+            .min {
+              opacity: .6;
+              margin-left: 1rem;
+            }
           }
         }
+
       }
     }
   }
@@ -149,33 +248,41 @@ section {
 
 @media(max-width:1700px){
     section{
-        width: 100%;
-        .day-content, .week-content{
-            padding: 3rem 2rem;
+        width: 90%;
+        max-height: 640px;
+        height: calc(100vh - 5rem);
+
+        .day-content, .right-box{
+          padding: 3rem 2rem 1rem 2rem;
         }
 
         .day-content{
             width: 55%;
 
             .feature {
-                width: 100%;
+                width: 80%;
 
                 .text-box{
-                    justify-content: center;
+                    padding-right: 2rem;
 
-                    p.hour{
-                        font-size: 2.4rem;
+                    & > div{
+
+                      p.hour{
+                          font-size: 2.4rem;
+                      }
+  
+                      h2.temp{
+                          font-size: 10vw;
+                          line-height: 1;
+                      }
                     }
 
-                    h2.temp{
-                        font-size: 11vw;
-                        line-height: 1;
-                    }
                 }
 
                 .svg-container{
-                    display: flex;
-                    align-items: center;
+                    img, svg{
+                      max-width: 15rem;
+                    }
                 }
             }
 
@@ -194,32 +301,55 @@ section {
             }
         }
 
-        .week-content{
+        .right-box{
             width: 45%;
-            
-            .box{
-                padding: 2.5rem;
 
-                .box-line{
-                    .weekday, .temperature .max, .temperature .min{
-                        font-size: 4vh;
-                    }
+            .details-box{
+              .box{
+                margin-bottom: 1rem;
 
-                    img{
-                        width: 3rem;
-                    }
+                .icon-cont{
+                  width: 3.5rem;
+                  height: 3.5rem;
                 }
+
+                & > div h3{
+                  font-size: 1.2rem;
+                  span{
+                    font-size: .9rem;
+                  }
+                }
+              }
             }
+
+            .week-content {
+              padding: 1.5rem;
+
+              .box-line {
+                .weekday, & > div .temperature .max, & > div .temperature .min {
+                  font-size: 1.1rem;
+                }
+                
+                & > div{
+                  img {
+                    width: 1.7rem;
+                  }
+                }
+
+              }
+            }            
         }
     }
 }
 
-@media(max-width:992px){
+@media(max-width:1024px){
     section{
-        .day-content, .week-content{
-            padding: 0;
-            width: 100%;
-        }
+      width: 100%;
+
+      .day-content, .right-box{
+        padding: 0;
+        width: 100%;
+      }
         
         .day-content{
             padding-bottom: 2.5rem;
@@ -230,68 +360,100 @@ section {
             .feature{
                 animation: appear .9s 0s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
                 height: auto;
-                padding: 0 0 12vh 0;
+                padding: 0 0 5vh 0;
+                width: 100%;
                 
                 .text-box {
+                  padding-right: 0rem;
 
+                  & > div{
                     h2.temp{
-                        font-size: 11vh;
+                      font-size: 11vh;
                     }
-
+  
                     p.hour{
-                        font-size: 1.5rem;
+                      font-size: 1.2rem;
+                      margin: 0.5rem 0 0.7rem 0;
+                      opacity: 0.6;
                     }
-
+  
                     p.location{
-                        font-size: .9rem;
-
-                        img{
-                            display: none;
-                        }
+                      font-size: .9rem;
+  
+                      img{
+                          display: none;
+                      }
                     }
+                  }
+
+                }
+
+                .svg-container{
+                  padding-left: 1rem;
+
+                  img{
+                    max-width: 12rem;
+                  }
                 }
             }
 
             .hours{
                 width: 100%;
-                padding: 1.3rem 1.5rem;
+                padding: 1.3rem 1rem;
                 max-height: 165px;
+                max-width: 450px;
                 animation: appear .9s .3s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
 
                 .hour-box{
-                    .hour, .temp{
+                    .hour {
                         font-size: .9rem;
+                    }
+
+                    .temp{
+                      font-size: 1rem;
                     }
 
                     img{
                         width: 10vw;
-                    }
+                        max-width: 2.8rem;
+                      }
                 }
+            }
+
+            &.blur{
+              filter: blur(.4rem);
             }
         }
 
-        .week-content{
+        .right-box{
             position: fixed;
             background: #FFF;
             width: 100vw;
             left: 0;
-            height: 70vh;
-            bottom: -69vh;
-            transition-duration: .8s;
+            height: 80vh;
+            bottom: -79vh;
+            padding: 0 1rem;
+            transition-duration: .7s;
             animation: appear .9s .6s cubic-bezier(0.29, 0.37, 0, 0.99) forwards;
             z-index: 3;
             
             *{
-                color: #b3b3b3;
-                text-shadow: none;
+              color: rgba(255, 255, 255, 0.85);
+              text-shadow: none;
             }
 
             &.active{
                 bottom: 0;
+                background: rgba(0, 0, 0, 0.8);
 
-                .mobile-btn img.arrow{
-                    transform: translate(-50%,-50%) rotate(0deg);
-                }                
+                .mobile-btn {
+                  filter: invert(1);
+                  opacity: .8;
+
+                  img.arrow {
+                    transform: translate(-50%, -50%) rotate(0deg);
+                  }
+                }
             }
             
             .mobile-btn{
@@ -315,20 +477,68 @@ section {
                 }
             }
 
-            .box{
-                padding: 10vw;
+            .details-box{
+              padding: 1.6rem 1rem 0rem 1rem;
+              max-width: 500px;
+              margin: 0 auto;
+              
+              .box{
+                width: 33%;
 
-                .box-line{
-                    .weekday, .temperature .max, .temperature .min{
-                        font-size: 3vh;
-                    }
-
-                    img{
-                        height: 6vh;
-                        width: initial;
-                    }
+                .icon-cont{
+                  width: 12vw;
+                  height: 12vw;
+                  max-width: 4rem;
+                  max-height: 4rem;
+                  filter: invert(.2);
+                  margin-right: .5rem;
+                  padding: 0.7rem;
                 }
-            }            
+
+                & > div{
+                  span{
+                    font-size: .6rem;
+                  }
+                  h3{
+                    font-size: .8rem;
+                    margin: 0;
+
+                    span{
+                      font-size: .6rem;
+                    }
+                  }
+                }
+              }
+            }
+
+            .week-content {
+              padding: .5rem 5vw 5vw;
+              max-width: 500px;
+              margin: 0 auto;
+              background: transparent;
+
+              .box-line {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+                padding-bottom: .5rem;
+                
+                .weekday {
+                  font-size: 2.6vh;
+                }
+
+                & > div{
+                  img {
+                    height: 5vh;
+                    width: initial;
+                    margin-right: 1rem;
+                  }
+
+                  .temperature .max,
+                  .temperature .min {
+                    font-size: 2.6vh;
+                  }
+                }
+              }
+            }
         }
 
         .touch-background {

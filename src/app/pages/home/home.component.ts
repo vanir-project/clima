@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public navValue:string='local';
-  public clima:string='dia-despejado';
-  public effect:string='soleado';
+  public clima: string ='noche-lluviosa';
+  public effect:string='noche-nubes-lluvia';
   public simulator = false;
   
   constructor() { }
