@@ -1,0 +1,29 @@
+svg {
+  #nube {
+    animation: translateCloud 3s infinite alternate ease-in-out;
+  }
+
+  #nube-2 {
+    animation: translateCloud2 2.5s infinite alternate ease-in-out;
+  }
+}
+
+@keyframes translateCloud {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-5%);
+  }
+}
+
+@keyframes translateCloud2 {
+  0% {
+    transform: translate(0%,0%);
+  }
+
+  100% {
+    transform: translate(3%,5%);
+  }
+}

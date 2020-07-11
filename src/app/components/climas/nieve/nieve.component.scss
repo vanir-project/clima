@@ -1,0 +1,59 @@
+svg {
+  #nube {
+    animation: translateCloud 2s infinite alternate ease-in-out;
+  }
+
+  #nube-2 {
+    animation: translateCloud2 2.5s infinite alternate ease-in-out;
+  }
+
+  #nieve
+   {
+    .st1 {
+      opacity: 0;
+      animation: rain 1s 0s infinite ease-out;
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}n) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes translateCloud {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-5%);
+  }
+}
+
+@keyframes translateCloud2 {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(3%);
+  }
+}
+
+@keyframes rain {
+  0% {
+    opacity: 0;
+    transform: translateY(-2%);
+  }
+
+  50% {
+    opacity: .8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(8%);
+  }
+}

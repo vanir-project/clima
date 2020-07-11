@@ -1,0 +1,125 @@
+svg {
+  #nube-trasera {
+    animation: translateCloud 3s infinite alternate ease-in-out;
+
+    #nube {
+      animation: light-back 2s .5s infinite;
+    }
+  }
+
+  #nube-clara {
+    animation: translateCloud2 2.5s infinite alternate ease-in-out;
+
+    #nube-2 {
+      animation: light-front 2s .5s infinite;
+    }
+  }
+
+  #trueno-container {
+    animation: translateCloud2 2.5s infinite alternate ease-in-out;
+
+    #trueno {
+      opacity: 0;
+      animation: thunder 2s .5s infinite;
+    }
+  }
+
+}
+
+@keyframes translateCloud {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-5%);
+  }
+}
+
+@keyframes translateCloud2 {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(3%);
+  }
+}
+
+@keyframes thunder {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: .2;
+  }
+
+  6% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: .7;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes light-front {
+  0% {
+    fill: #E4ECF9;
+  }
+
+  5% {
+    fill: #FFF;
+  }
+
+  6% {
+    fill: #E4ECF9
+  }
+
+  30% {
+    fill: #FFF;
+  }
+
+  80% {
+    fill: #E4ECF9
+  }
+
+  100% {
+    fill: #E4ECF9
+  }
+}
+
+@keyframes light-back {
+  0% {
+    fill: #B9D7FF;
+  }
+
+  5% {
+    fill: #cfe4ff;
+  }
+
+  6% {
+    fill: #B9D7FF
+  }
+
+  30% {
+    fill: #cfe4ff;
+  }
+
+  80% {
+    fill: #B9D7FF
+  }
+
+  100% {
+    fill: #B9D7FF
+  }
+}

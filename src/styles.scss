@@ -96,6 +96,10 @@ app-world{
     width: 100%;
 }
 
+svg{
+  overflow: visible;
+}
+
 @keyframes appear {
   0% {
     transform: translateY(2rem);
@@ -127,6 +131,16 @@ app-world{
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes girar {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 

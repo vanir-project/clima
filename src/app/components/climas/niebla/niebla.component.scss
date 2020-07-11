@@ -1,0 +1,51 @@
+svg{
+    #niebla{
+        .st1{
+            transform: translateX(-2%);            
+        }
+        
+        .mist-1{
+            animation: translateMist 4s 0s infinite ease-in-out alternate;
+        }
+        .mist-2{
+            animation: translateMist2 5s 0s infinite ease-in-out alternate;
+        }
+        .mist-3{
+            display: none;
+        }
+        .mist-4{
+            animation: translateMist4 4.5s 0s infinite ease-in-out alternate;
+        }
+    }
+}
+
+@keyframes translateMist {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(8%);
+  }
+}
+
+@keyframes translateMist2 {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-9%);
+  }
+}
+
+@keyframes translateMist4 {
+  0% {
+    transform: translateX(2%);
+  }
+
+  100% {
+    transform: translateX(-6%);
+  }
+}
+

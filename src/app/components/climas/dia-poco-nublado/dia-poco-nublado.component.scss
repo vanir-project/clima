@@ -1,0 +1,39 @@
+svg {
+  #container-rayos {
+    animation: girar 30s infinite linear;
+    transform-origin: 28.8% 41.1%;
+    
+    #rayos {
+      animation: rayosSol 2s infinite ease-in-out;
+          transform-origin: 28.8% 41.1%;
+    }
+  }
+
+  #nube{
+    animation: translateCloud2 5s infinite alternate ease-in-out;
+  }
+}
+
+@keyframes translateCloud2 {
+  0% {
+    transform: translateX(-7%);
+  }
+
+  100% {
+    transform: translateX(2%);
+  }
+}
+
+@keyframes rayosSol {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
