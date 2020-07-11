@@ -107,7 +107,8 @@ section {
           font-size: 1.7rem;
         }
 
-        img {
+        img,
+        app-lluvia {
           width: 3rem;
         }
       }
@@ -218,7 +219,7 @@ section {
           display: flex;
           align-items: center;
 
-          img {
+          img, app-lluvia {
             width: 2.8rem;
             margin-right: 3rem;
           }
@@ -421,7 +422,8 @@ section {
                       font-size: 1rem;
                     }
 
-                    img{
+                    img,
+                    app-lluvia {
                         width: 10vw;
                         max-width: 2.8rem;
                       }
@@ -563,7 +565,7 @@ section {
               }
 
               &>div {
-                img {
+                img, app-lluvia {
                   width: 7vw;
                   margin-right: 1rem;
                 }
