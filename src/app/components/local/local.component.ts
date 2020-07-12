@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../../services/weather/weather.service';
+import { CurrentWeather, WeekWeather } from '../../models';
 
 @Component({
   selector: 'app-local',
@@ -7,41 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocalComponent implements OnInit {
   public days = ['Hoy', 'Martes 7', 'Miércoles 8', 'Jueves 9', 'Viernes 10', 'Sábado 11'];
-  public hours = ['4PM', '5PM', '6PM', '7PM', '8PM', '9PM',];
+  public currentDay = new Date();
+  public currentWeather: CurrentWeather;
+  public weekWeather: WeekWeather;
+  public hours = ['4PM', '5PM', '6PM', '7PM', '8PM', '9PM'];
   public mobileBtn = false;
-  public boxDetail = [{
-    icon: 'termi',
-    descr: 'Térmica',
-    value: '17.8°'
-  }, {
-    icon: 'viento',
-    descr: 'Viento',
-    value: '11',
-    unid: 'km/h'
-  }, {
-    icon: 'humed',
-    descr: 'Humedad',
-    value: '92%'
-  }, {
-    icon: 'presion',
-    descr: 'Presión',
-    value: '1020',
-    unid: 'hPa'
-  }, {
-    icon: 'deg3',
-    descr: 'Viento',
-    value: 'SO',
-    deg: 'rotate(50deg)'
-  }, {
-    icon: 'visibi3',
-    descr: 'Visibilidad',
-    value: '10',
-    unid: 'km'
-  }];
 
-  constructor() { }
+  constructor(
+    private weatherService: WeatherService
+  ) { }
 
   ngOnInit() {
+    setInterval(() => {
+      this.currentDay = new Date();
+      return true;
+    }, 1000);
+    return this.weatherService.getCurrentWeather()
+    .then((currentWeather) => {
+      this.currentWeather = currentWeather;
+      return this.weatherService.getWeekWeather();
+    })
+    .then((weekWeather) => {
+      this.weekWeather = weekWeather;
+      console.log('Week weather: ', weekWeather);
+      console.log('Current weather:  ', this.currentWeather)
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
   }
 
   public mobileBtnFunction() {

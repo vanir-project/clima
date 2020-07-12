@@ -1,25 +1,48 @@
-<section>
+<section *ngIf="currentWeather">
     <div class="day-content" [ngClass]="{'blur': mobileBtn}">
         <div class="feature">
             <div class="text-box">
                 <div>
                     <p class="location"><img src="assets/img/ubi.svg" alt=""> Buenos Aires, Argentina</p>
-                    <p class="hour">3:48 PM</p>
-                    <h2 class="temp">18°</h2>
+                    <p class="hour">{{currentDay.getHours()}}:{{currentDay.getMinutes()}} PM</p>
+                    <h2 class="temp">{{currentWeather.temp}}°</h2>
                 </div>
             </div>
             <div class="svg-container">
                 <app-lluvia></app-lluvia>
-                <!-- <app-soleado></app-soleado>
-                <app-luna-lluvia></app-luna-lluvia>
-                <app-sol-lluvia></app-sol-lluvia>
-                <app-dia-poco-nublado></app-dia-poco-nublado>
-                <app-noche-poco-nublado></app-noche-poco-nublado>
-                <app-nublado></app-nublado>
-                <app-tormenta></app-tormenta>
-                <app-luna></app-luna>
-                <app-nieve></app-nieve>
-                <app-niebla></app-niebla> -->
+                <!-- <container-element [ngSwitch]="currentWeather.condition.id">
+                  <some-element *ngSwitchCase="">
+                    <app-dia-poco-nublado></app-dia-poco-nublado>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-lluvia></app-lluvia>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-luna></app-luna>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-luna-lluvia></app-luna-lluvia>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-niebla></app-niebla>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-nieve></app-nieve>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-noche-poco-nublado></app-noche-poco-nublado>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-nublado></app-nublado>
+                    <app-sol-lluvia></app-sol-lluvia>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-soleado></app-soleado>
+                  </some-element>
+                  <some-element *ngSwitchCase="">
+                    <app-tormenta></app-tormenta>
+                  </some-element>
+                </container-element> -->
             </div>
         </div>
         <div class="hours">
@@ -31,21 +54,21 @@
             </div>
         </div>
     </div>
-    <div class="right-box" [ngClass]="{'active': mobileBtn}">
+    <div class="right-box" [ngClass]="{'active': mobileBtn}" *ngIf="currentWeather.boxDetails">
         <div class="mobile-btn" (click)="mobileBtnFunction()" >
             <img src="assets/img/mobile_btn.png" alt="">
             <img class="arrow" src="assets/img/down_arrow.svg" alt="">
         </div>
         <div class="details-box">
-            <div class="box" *ngFor="let a of boxDetail">
+            <div class="box" *ngFor="let a of currentWeather.boxDetails">
                 <div class="icon-cont">
                     <img src="assets/img/{{a.icon}}.svg" alt="" [ngStyle]="{'transform': a.deg }">
-                </div>                
+                </div>
                 <div>
                     <span>{{a.descr}}</span>
                     <h3>{{a.value}}<span>{{a.unid}}</span></h3>
                 </div>
-            </div>            
+            </div>
         </div>
         <div class="week-content">
             <div class="box-line" *ngFor="let item of days">
