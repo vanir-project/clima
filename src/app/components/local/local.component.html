@@ -8,20 +8,18 @@
                     <h2 class="temp">{{currentWeather.temp}}°</h2>
                 </div>
             </div>
-            <div class="svg-container">
-                <div [ngSwitch]="currentWeather.condition.icon">
-                  <app-luna *ngSwitchCase="'01n'"></app-luna>
-                    <app-soleado *ngSwitchCase="'01d'"></app-soleado>
-                    <app-nublado *ngSwitchCase="'03d'"></app-nublado>
-                    <app-noche-poco-nublado *ngSwitchCase="'04n'"></app-noche-poco-nublado>
-                    <app-dia-poco-nublado  *ngSwitchCase="'04d'"></app-dia-poco-nublado>
-                    <app-lluvia *ngSwitchCase="'09d'"></app-lluvia>
-                    <app-luna-lluvia *ngSwitchCase="'10n'"></app-luna-lluvia>
-                    <app-sol-lluvia *ngSwitchCase="'10d'"></app-sol-lluvia>
-                    <app-tormenta *ngSwitchCase="'11d'"></app-tormenta>
-                    <app-nieve *ngSwitchCase="'13d'"></app-nieve>
-                    <app-niebla *ngSwitchCase="'50d'"></app-niebla>
-                </div>
+            <div class="svg-container"[ngSwitch]="currentWeather.condition.icon">
+                <app-luna *ngSwitchCase="'01n'"></app-luna>
+                <app-soleado *ngSwitchCase="'01d'"></app-soleado>
+                <app-nublado *ngSwitchCase="'03d'"></app-nublado>
+                <app-noche-poco-nublado *ngSwitchCase="'04n'"></app-noche-poco-nublado>
+                <app-dia-poco-nublado  *ngSwitchCase="'04d'"></app-dia-poco-nublado>
+                <app-lluvia *ngSwitchCase="'09d'"></app-lluvia>
+                <app-luna-lluvia *ngSwitchCase="'10n'"></app-luna-lluvia>
+                <app-sol-lluvia *ngSwitchCase="'10d'"></app-sol-lluvia>
+                <app-tormenta *ngSwitchCase="'11d'"></app-tormenta>
+                <app-nieve *ngSwitchCase="'13d'"></app-nieve>
+                <app-niebla *ngSwitchCase="'50d'"></app-niebla>
             </div>
         </div>
         <div class="hours">
