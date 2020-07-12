@@ -31,12 +31,18 @@ export class LocalComponent implements OnInit {
     })
     .then((weekWeather) => {
       this.weekWeather = weekWeather;
-      console.log('Week weather: ', weekWeather);
-      console.log('Current weather:  ', this.currentWeather)
     })
     .catch((err) => {
       console.error(err.message);
     });
+  }
+
+  public formatMinutes() {
+    const minutes = this.currentDay.getMinutes();
+    if (minutes < 10) {
+      return `0${minutes}`;
+    }
+    return minutes;
   }
 
   public mobileBtnFunction() {

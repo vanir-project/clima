@@ -3,6 +3,8 @@ export class CurrentWeather {
 
     const boxDetails = analyzeData(data);
 
+    const condition = determineIcon(data.condition);
+
     return new this(
       data.condition,
       data.temp,
@@ -22,6 +24,17 @@ export class CurrentWeather {
     public country?: any,
     public boxDetails?: Array<BoxDetail>
   ) {}
+}
+
+function determineIcon(condition) {
+  switch (condition.icon) {
+    case '11n': condition.icon = '11d'; break;
+    case '13n': condition.icon = '13d'; break;
+    case '10n': condition.icon = '10d'; break;
+    case '50n': condition.icon = '50d'; break;
+    case '03n': condition.icon = '03d'; break;
+  }
+  return condition;
 }
 
 function analyzeData(data) {
@@ -46,7 +59,6 @@ function analyzeData(data) {
     }
     return 0;
   });
-  console.log(boxDetails)
   return boxDetails;
 }
 
