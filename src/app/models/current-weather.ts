@@ -6,7 +6,7 @@ export class CurrentWeather {
     const condition = determineIcon(data.condition);
 
     return new this(
-      data.condition,
+      condition,
       data.temp,
       data.tempMin,
       data.tempMax,
@@ -30,7 +30,7 @@ function determineIcon(condition) {
   switch (condition.icon) {
     case '11n': condition.icon = '11d'; break;
     case '13n': condition.icon = '13d'; break;
-    case '10n': condition.icon = '10d'; break;
+    case '09n': condition.icon = '09d'; break;
     case '50n': condition.icon = '50d'; break;
     case '03n': condition.icon = '03d'; break;
   }
