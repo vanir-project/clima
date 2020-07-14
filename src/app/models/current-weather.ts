@@ -3,6 +3,9 @@ export class CurrentWeather {
 
     const boxDetails = analyzeData(data);
 
+    if (!boxDetails[boxDetails.length - 1]) {
+      boxDetails.splice(boxDetails.length - 1, 1);
+    }
     const condition = determineIcon(data.condition);
 
     return new this(
