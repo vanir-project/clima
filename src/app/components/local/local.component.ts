@@ -27,13 +27,6 @@ export class LocalComponent implements OnInit {
     return this.weatherService.getCurrentWeather()
     .then((currentWeather) => {
       this.currentWeather = currentWeather;
-      this.days.push({
-        day: new Date().getDate(),
-        data: currentWeather,
-        name: 'Hoy',
-        minTemp: currentWeather.tempMin,
-        maxTemp: currentWeather.tempMax
-      });
       return this.weatherService.getWeekWeather();
     })
     .then((weekWeather) => {
@@ -46,62 +39,71 @@ export class LocalComponent implements OnInit {
     });
   }
 
+  public removeDecimal(temp) {
+    return Math.floor(Number(temp));
+  }
+
   public formatedTotalWeahter(totalWeather) {
     let days = [];
-    totalWeather.forEach((groupWeather) => {
-      console.log(groupWeather);
+    totalWeather.forEach((groupWeather, index) => {
       let temps = {
         min: undefined,
         max: undefined
       };
-      groupWeather.forEach((weather, index) => {
-        if (index === 0) {
-          temps.min = Number(weather.data.temp);
-          temps.max = Number(weather.data.temp);
+      groupWeather.forEach((weather, idx) => {
+        if (idx === 0) {
+          temps.min = Math.floor(Number(weather.data.temp));
+          temps.max = Math.floor(Number(weather.data.temp));
         }
         if (Number(weather.data.temp) < temps.min) {
-          return temps.min = Number(weather.data.temp);
+          return temps.min = Math.floor(Number(weather.data.temp));
         }
         if (Number(weather.data.temp) > temps.max) {
-          return temps.max = Number(weather.data.temp);
+          return temps.max = Math.floor(Number(weather.data.temp));
         }
       });
-      console.log(temps);
-      return days;
+      if (groupWeather[index].day === new Date().getDate()) {
+        groupWeather[index].name = 'Hoy'
+      }
+      days.push({
+        day: groupWeather[index].day,
+        data: groupWeather[index].data,
+        name: groupWeather[index].name,
+        minTemp: temps.min,
+        maxTemp: temps.max
+      });
     });
+    return days;
   }
 
   public formatDays(weekWeather) {
     const nameDays = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
-    // let totalWeather = [];
-    // let groupWeather = [];
-    console.log(weekWeather);
+    let totalWeather = [];
+    let groupWeather = [];
     weekWeather.forEach((weather, idx) => {
-      const index = this.days.findIndex((data) => {
+      const index = groupWeather.findIndex((data) => {
         return data.day === weather.date_.getDate();
       });
       let nameDate = '';
       if (weather.date_.getDay() !== new Date().getDay()) {
         nameDate = nameDays[weather.date_.getDay()] + ' ' + weather.date_.getDate();
       }
-      if (index > -1) {
-        if (Number(weather.temp) < this.days[index].minTemp) {
-          return this.days[index].minTemp = Number(weather.temp);
-        }
-        if (Number(weather.temp) > this.days[index].maxTemp) {
-          return this.days[index].maxTemp = Number(weather.temp);
-        }
-        return true;
+      if (index > -1 || idx === 0) {
+        return groupWeather.push({
+          day: weather.date_.getDate(),
+          data: weather,
+          name: nameDate
+        });
       }
-      console.log(this.days);
-      this.days.push({
+      totalWeather.push(groupWeather);
+      return groupWeather = [{
         day: weather.date_.getDate(),
         data: weather,
-        name: nameDate,
-        minTemp: Number(weather.temp),
-        maxTemp: Number(weather.temp)
-      });
+        name: nameDate
+      }];
     });
+    this.days = this.days.concat(this.formatedTotalWeahter(totalWeather));
+    return Promise.resolve(true);
   }
 
   public formatHours(hours) {
