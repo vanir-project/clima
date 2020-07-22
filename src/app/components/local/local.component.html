@@ -1,61 +1,60 @@
-<section>
+<section *ngIf="currentWeather">
     <div class="day-content" [ngClass]="{'blur': mobileBtn}">
         <div class="feature">
             <div class="text-box">
                 <div>
-                    <p class="location"><img src="assets/img/ubi.svg" alt=""> Buenos Aires, Argentina</p>
-                    <p class="hour">3:48 PM</p>
-                    <h2 class="temp">18°</h2>
+                    <p class="location"><img src="assets/img/ubi.svg" alt=""> {{currentWeather.city.name}}, Argentina</p>
+                    <p class="hour">{{currentDay.getHours()}}:{{formatMinutes()}}</p>
+                    <h2 class="temp">{{currentWeather.temp}}°</h2>
                 </div>
             </div>
-            <div class="svg-container">
-                <app-lluvia></app-lluvia>
-                <!-- <app-soleado></app-soleado>
-                <app-luna-lluvia></app-luna-lluvia>
-                <app-sol-lluvia></app-sol-lluvia>
-                <app-dia-poco-nublado></app-dia-poco-nublado>
-                <app-noche-poco-nublado></app-noche-poco-nublado>
-                <app-nublado></app-nublado>
-                <app-tormenta></app-tormenta>
-                <app-luna></app-luna>
-                <app-nieve></app-nieve>
-                <app-niebla></app-niebla> -->
+            <div class="svg-container"[ngSwitch]="currentWeather.condition.icon">
+                <app-luna *ngSwitchCase="'01n'"></app-luna>
+                <app-soleado *ngSwitchCase="'01d'"></app-soleado>
+                <app-nublado *ngSwitchCase="'03d'"></app-nublado>
+                <app-noche-poco-nublado *ngSwitchCase="'04n'"></app-noche-poco-nublado>
+                <app-dia-poco-nublado  *ngSwitchCase="'04d'"></app-dia-poco-nublado>
+                <app-lluvia *ngSwitchCase="'09d'"></app-lluvia>
+                <app-luna-lluvia *ngSwitchCase="'10n'"></app-luna-lluvia>
+                <app-sol-lluvia *ngSwitchCase="'10d'"></app-sol-lluvia>
+                <app-tormenta *ngSwitchCase="'11d'"></app-tormenta>
+                <app-nieve *ngSwitchCase="'13d'"></app-nieve>
+                <app-niebla *ngSwitchCase="'50d'"></app-niebla>
             </div>
         </div>
         <div class="hours">
             <div class="hour-box" *ngFor="let item of hours">
-                <span class="hour">{{item}}</span>
-                <img src="assets/img/climas/lluvia.svg" alt="">
-                <!-- <app-lluvia></app-lluvia> -->
-                <span class="temp">16°</span>
+                <span class="hour">{{formatHours(item.date_.getHours())}}</span>
+                <img src="assets/img/climas/{{item.pathIcon}}" alt="">
+                <span class="temp">{{removeDecimal(item.temp)}}°</span>
             </div>
         </div>
     </div>
-    <div class="right-box" [ngClass]="{'active': mobileBtn}">
+    <div class="right-box" [ngClass]="{'active': mobileBtn}" *ngIf="currentWeather.boxDetails">
         <div class="mobile-btn" (click)="mobileBtnFunction()" >
             <img src="assets/img/mobile_btn.png" alt="">
             <img class="arrow" src="assets/img/down_arrow.svg" alt="">
         </div>
         <div class="details-box">
-            <div class="box" *ngFor="let a of boxDetail">
+            <div class="box" *ngFor="let condition of currentWeather.boxDetails">
                 <div class="icon-cont">
-                    <img src="assets/img/{{a.icon}}.svg" alt="" [ngStyle]="{'transform': a.deg }">
-                </div>                
-                <div>
-                    <span>{{a.descr}}</span>
-                    <h3>{{a.value}}<span>{{a.unid}}</span></h3>
+                    <img src="assets/img/{{condition.icon}}.svg" alt="" [ngStyle]="{'transform': condition.deg }">
                 </div>
-            </div>            
+                <div>
+                    <span>{{condition.descr}}</span>
+                    <h3>{{condition.value}}<span>{{condition.unid}}</span></h3>
+                </div>
+            </div>
         </div>
         <div class="week-content">
             <div class="box-line" *ngFor="let item of days">
-                <span class="weekday">{{item}}</span>
+                <span class="weekday">{{item.name}}</span>
                 <div>
-                    <img src="assets/img/climas/sol_lluvia.svg" alt="">
+                    <img src="assets/img/climas/{{item.data.pathIcon}}" alt="">
                     <!-- <app-lluvia></app-lluvia> -->
                     <div class="temperature">
-                        <span class="max">21°</span>
-                        <span class="min">15°</span>
+                        <span class="max">{{item.maxTemp}}°</span>
+                        <span class="min">{{item.minTemp}}°</span>
                     </div>
                 </div>
             </div>
