@@ -63,12 +63,13 @@ export class LocalComponent implements OnInit {
         }
       });
       if (groupWeather[index].day === new Date().getDate()) {
-        groupWeather[index].name = 'Hoy'
+        groupWeather[index].name = 'Hoy';
       }
+      const midday = Math.trunc(groupWeather.length / 2);
       days.push({
-        day: groupWeather[index].day,
-        data: groupWeather[index].data,
-        name: groupWeather[index].name,
+        day: groupWeather[midday].day,
+        data: groupWeather[midday].data,
+        name: groupWeather[midday].name,
         minTemp: temps.min,
         maxTemp: temps.max
       });

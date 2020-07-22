@@ -25,7 +25,7 @@
         <div class="hours">
             <div class="hour-box" *ngFor="let item of hours">
                 <span class="hour">{{formatHours(item.date_.getHours())}}</span>
-                <img src="assets/img/climas/lluvia.svg" alt="">
+                <img src="assets/img/climas/{{item.pathIcon}}" alt="">
                 <span class="temp">{{removeDecimal(item.temp)}}°</span>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <div class="box-line" *ngFor="let item of days">
                 <span class="weekday">{{item.name}}</span>
                 <div>
-                    <img src="assets/img/climas/sol_lluvia.svg" alt="">
+                    <img src="assets/img/climas/{{item.data.pathIcon}}" alt="">
                     <!-- <app-lluvia></app-lluvia> -->
                     <div class="temperature">
                         <span class="max">{{item.maxTemp}}°</span>

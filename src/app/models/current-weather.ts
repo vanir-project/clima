@@ -10,7 +10,7 @@ export class CurrentWeather {
 
     return new this(
       condition,
-      data.temp,
+      Math.trunc(data.temp),
       data.tempMin,
       data.tempMax,
       data.city,
@@ -69,7 +69,7 @@ function formatData(condition, key) {
   let formatedData;
   switch (key) {
     case 'feelsLike': formatedData = BoxDetail.fromJson({orden: 1, icon: 'termi', descr: 'Térmica', value: condition + 'º'}); break;
-    case 'speed': formatedData = BoxDetail.fromJson({orden: 2, icon: 'viento', descr: 'Viento', value: (condition * (3600/1000)).toFixed(1), unid: 'km/h'}); break;
+    case 'speed': formatedData = BoxDetail.fromJson({orden: 2, icon: 'viento', descr: 'Viento', value: Math.trunc(condition * (3600/1000)), unid: 'km/h'}); break;
     case 'humidity': formatedData = BoxDetail.fromJson({orden: 3, icon: 'humed', descr: 'Humedad', value: condition + '%'}); break;
     case 'pressure': formatedData = BoxDetail.fromJson({orden: 4, icon: 'presion', descr: 'Presión', value: condition, unid: 'hPa'}); break;
     case 'deg': formatedData = BoxDetail.fromJson({orden: 5, icon: 'deg3', descr: 'Viento', value: 'SO', deg: `rotate(${condition}deg)`}); break;
