@@ -2,12 +2,121 @@
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
+.loader-page{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: opacityLoader 5s .3s forwards;
+
+  .svg-animation {
+    svg {
+      width: 34vh;
+      height: 34vh;
+      overflow: visible;
+      padding: 3.6rem 3rem 3rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.11);
+      
+      path {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 15;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+        stroke-dashoffset: 1322;
+        stroke-dasharray: 1322;
+        animation: dibujaLineas 3.5s ease-in-out forwards;
+      }
+
+      .lluvia {
+        .a {
+          fill: none;
+          stroke: #fff;
+          stroke-miterlimit: 10;
+          stroke-width: 15;
+          stroke-linejoin: round;
+          stroke-linecap: round;
+          opacity: 0;
+          animation: lluvia .7s ease-in-out infinite;
+
+          @for $i from 1 through 11 {
+            &:nth-child(#{$i}n) {
+              animation-delay: #{1.5 + $i * 0.1}s;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes dibujaLineas {
+    0% {
+      stroke-dashoffset: 1322;
+      opacity: 0;
+    }
+
+    5% {
+      opacity: 1;
+    }
+
+    70% {
+      stroke-dashoffset: 0;
+    }
+
+    100% {
+      stroke-dashoffset: 0;
+    }
+
+  }
+
+  @keyframes lluvia {
+    0% {
+      opacity: 0;
+      transform: translateY(-3rem);
+    }
+
+    50% {
+      opacity: .5;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+  }
+
+  @keyframes opacityLoader {
+    0%{
+      opacity: 0;
+    }
+    25%{
+      opacity: 1;
+    }
+    90%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+}
+
 section {
   width: 80%;
   max-width: 1536px;
   height: 100%;
   margin: 0 auto;
   display: flex;
+  opacity: 0;
+  animation: provisorioOpacity .4s 4.5s forwards;
 
   .day-content {
     width: 60%;
@@ -245,6 +354,11 @@ section {
   .touch-background {
     display: none;
   }
+}
+
+@keyframes provisorioOpacity{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
 }
 
 @media(max-width:1700px){
