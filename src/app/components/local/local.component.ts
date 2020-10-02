@@ -62,9 +62,6 @@ export class LocalComponent implements OnInit {
           return temps.max = Math.floor(Number(weather.data.temp));
         }
       });
-      if (groupWeather[index].day === new Date().getDate()) {
-        groupWeather[index].name = 'Hoy';
-      }
       const midday = Math.trunc(groupWeather.length / 2);
       days.push({
         day: groupWeather[midday].day,
@@ -85,7 +82,7 @@ export class LocalComponent implements OnInit {
       const index = groupWeather.findIndex((data) => {
         return data.day === weather.date_.getDate();
       });
-      let nameDate = '';
+      let nameDate = 'Hoy';
       if (weather.date_.getDay() !== new Date().getDay()) {
         nameDate = nameDays[weather.date_.getDay()] + ' ' + weather.date_.getDate();
       }
