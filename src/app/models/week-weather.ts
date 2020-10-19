@@ -56,7 +56,8 @@ function determineIcon(condition) {
     '10n': 'luna_lluvia.svg',
     '11d': 'tormenta.svg',
     '13d': 'nieve.svg',
-    '50d': 'niebla.svg'
+    '50d': 'niebla.svg',
+    '04n': 'noche_poco_nublada.svg'
   };
   switch (icon) {
     case '11n': icon = '11d'; break;

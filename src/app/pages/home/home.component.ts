@@ -8,7 +8,7 @@ import { WeatherService } from '../../services/weather/weather.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public navValue:string='local';
+  public navValue = 'local';
   public clima: string;
   public effect: string;
   public simulator = false;
@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit {
         case '13n': icon = '13d'; break;
         case '50n': icon = '50d'; break;
         case '04d': icon = '02d'; break;
+        case '10n': icon = '09n'; break;
       }
       this.clima = allPathWeather[icon].clima;
       this.effect = allPathWeather[icon].effect;
